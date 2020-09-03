@@ -1,0 +1,6 @@
+#!/bin/bash
+echo "ip ospf 1"
+while IFS=" " read -r int mask
+do
+        echo "network $int $mask area 0"
+done < "$1"

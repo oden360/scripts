@@ -1,0 +1,13 @@
+
+#!/bin/bash
+while IFS=" " read -r int max time mode rest
+do
+    echo "int $int"
+    echo "sw po"
+    [[ $max != '*' ]] &&  echo "sw po max $max "
+    [[ $rest != '*' ]] &&        echo "sw po mac $rest "
+    [[ $time != '*' ]] && echo "sw po a time $time"
+    [[ $mode == "p" ]] && echo "sw po vi p"
+    [[ $mode == "s" ]] && echo "sw po vi s"
+    [[ $mode == "r" ]] && echo "sw po vi r"
+done < "$1"

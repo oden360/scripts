@@ -1,0 +1,8 @@
+
+#!/bin/bash
+while IFS=" " read -r linetrust rest
+do
+    echo "ip arp inspection"
+    echo "int $linetrust"
+    echo "ip arp ins t"
+done < "$1"

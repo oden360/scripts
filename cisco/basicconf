@@ -1,0 +1,25 @@
+#!/bin/bash
+while IFS=" " read -r hoste pass1 pass2 pass3 user upass domain
+do
+echo "
+en
+conf t
+h $hoste
+ena s $pass1
+lin co 0
+pass $pass2
+login local
+lin v 0 15
+pass $pass3
+trans i ssh
+log local
+exit
+ser p
+u $user s $upass
+ip domain-na $domain
+cry k g rsa g m 1024
+ba m $ no un access $
+exit
+copy run st
+"
+done < "$1"

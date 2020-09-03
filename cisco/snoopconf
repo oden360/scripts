@@ -1,0 +1,9 @@
+
+#!/bin/bash
+while IFS=" " read -r linetrust rate rest
+do
+    echo "ip dhcp sno"
+    echo "int $linetrust"
+    echo "ip dhcp sno t"
+    [[ $rate != '*' ]] && echo "ip dhcp sno limit rate $rate"
+done < "$1"

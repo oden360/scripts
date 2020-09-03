@@ -1,0 +1,5 @@
+#!/bin/bash
+rvm=$( sudo virsh list --all | awk '{if ($3=="running"){print($2)}}'|dmenu -i -p "shut down running vms")
+[[ "$rvm" == "" ]] && exit 1
+virsh shutdown $rvm
+

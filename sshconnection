@@ -1,0 +1,4 @@
+#!/bin/bash
+vm=$(sudo virsh list --all |awk  '{if ($3=="running"){print $2}}'|dmenu -i -p "pick vm")
+[[ "$vm" == "" ]] && exit 1
+

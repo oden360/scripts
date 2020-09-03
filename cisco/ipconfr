@@ -1,0 +1,9 @@
+#!/bin/bash
+while IFS=" " read -r in ip sub des
+do
+    echo " int $in"
+    [[ $in == *.* ]] && echo " enc d $(echo $in |cut -d'.' -f2)"
+    echo " ip addr $ip $sub
+ des $des
+       "
+done < "$1"

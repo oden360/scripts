@@ -1,0 +1,9 @@
+#!/bin/bash
+    echo "aaa new-model"
+    echo "aaa authorization configuration default group radius local"
+    echo "aaa authentication group radius local"
+    echo "radius server rad1"
+    echo "address ipv4 $1"
+    echo "key $2"
+    echo "lin v 0 15"
+    echo "login authen default"

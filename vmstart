@@ -1,0 +1,7 @@
+#!/bin/bash
+vm=$(sudo virsh list --all |awk  '{if ($3=="shut"){print $2}}'|dmenu -i -p "pick a vm")
+[[ "$vm" == "" ]] && exit 1
+a=$(echo -e  "yes\nno"|dmenu -i -p "screen?")
+
+virsh start $vm
+[[ "$a" == "yes" ]] && virt-viewer $vm &

@@ -1,0 +1,13 @@
+#!/bin/bash
+while IFS=" " read -r vlan interface
+do
+    read -a interfaces <<< "$interface"
+    for int in "${interfaces[@]}";
+    do
+        echo "
+        int $int
+        sw m a
+        sw a vl $vlan
+       "
+    done
+done < "$1"
