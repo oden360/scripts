@@ -1,0 +1,3 @@
+sudo apt list -installed | grep -v automatic > cleant.txt
+diff --new-line-formay="" --unchanged-line-format="" gitfile clean.txt > diff.txt
+diff.txt | grep -Eo '^.+/'| sed 's/\//g' | xargs sudo apt - y install
