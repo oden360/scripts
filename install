@@ -1,3 +1,17 @@
+sudo apt git install 
+git clone https://github.com/oden360/.dotfiles.git
 sudo apt list -installed | grep -v automatic > cleant.txt
 diff --new-line-formay="" --unchanged-line-format="" gitfile clean.txt > diff.txt
 diff.txt | grep -Eo '^.+/'| sed 's/\//g' | xargs sudo apt - y install
+cd .dotfiles
+ls -a | grep -v git | xargs -I [] cp -r [] ~/.
+cd 
+git clone https://github.com/neovim/neovim.git
+cd neovim/
+make
+
+vim +'PlugInstall --sync' +qa
+restard 
+
+pip3 install pynvim
+# fing LSP isn't working !!!
