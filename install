@@ -13,5 +13,5 @@ make
 vim +'PlugInstall --sync' +qa
 restard 
 
-pip3 install pynvim
-# fing LSP isn't working !!!
+pip3 install 'python-language-server[all]'
+
