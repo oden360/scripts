@@ -1,17 +1,21 @@
 sudo apt git install 
 git clone https://github.com/oden360/.dotfiles.git
-sudo apt list -installed | grep -v automatic > cleant.txt
-diff --new-line-formay="" --unchanged-line-format="" gitfile clean.txt > diff.txt
-diff.txt | grep -Eo '^.+/'| sed 's/\//g' | xargs sudo apt - y install
+sudo apt list --installed | grep -v automatic > clean.txt
+cat clean.txt | grep -Eo '^.+/' | sed 's/\///g' > current.txt
+cat .dotfiles/deb\ installs | grep -Eo '^.+/' | sed 's/\///g' > target.txt
+diff --new-line-format="" --unchanged-line-format="" current.txt target.txt > diff.txt
+cat diff.txt | xargs  -I[] sudo apt install [] -y
 cd .dotfiles
-ls -a | grep -v git | xargs -I [] cp -r [] ~/.
+ls -a | grep -v git | grep -Eo "^\.[^\.]+.+" > dotfiles.txt
+cat dotfiles.txt| xargs -I [] cp -r [] ~/.
 cd 
+rm *.txt
 git clone https://github.com/neovim/neovim.git
 cd neovim/
 make
 
 vim +'PlugInstall --sync' +qa
-sudo restart 
+sudo poweroff
 
 pip3 install 'python-language-server[all]'
 
